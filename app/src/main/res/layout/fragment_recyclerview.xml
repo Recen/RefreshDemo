@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:bind="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+        <variable
+            name="item"
+            type="com.seu.recen.refreshdemo.model.RefreshViewModel"/>
+        <variable
+            name="itemViewSelector"
+            type="me.tatarka.bindingcollectionadapter.ItemViewSelector"/>
+    </data>
+
+    <LinearLayout
+        android:id="@+id/activity_main"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+        <com.seu.recen.refreshdemo.refresh.PtrClassicFrameLayout
+            android:id="@+id/ptr_refresh"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/recyclerView"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                app:itemAnimator="@{null}"
+                app:itemView="@{itemViewSelector}"
+                app:items="@{item.imageList}"
+                bind:layoutManager="@{LayoutManagers.linear(LinearLayoutManager.VERTICAL, false)}"/>
+        </com.seu.recen.refreshdemo.refresh.PtrClassicFrameLayout>
+    </LinearLayout>
+</layout>
